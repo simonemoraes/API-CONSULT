@@ -17,5 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/paciente', 'PacienteController@index')->name('paciente');
+//Route::resource('/home','HomeController');
+Route::resource('/paciente','Api\PacienteController');
+
+//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/paciente', 'PacienteController@index')->name('paciente');

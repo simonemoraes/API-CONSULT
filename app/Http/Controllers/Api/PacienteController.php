@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Paciente;
+use App\model\Paciente;
 
 class PacienteController extends Controller
 {
+
+    public function _construct(Paciente $paciente)
+    {
+       $this->paciente = $paciente;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,21 +20,9 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $obj_paciente = new Paciente();
-        $paciente = $obj_paciente->listar();
-        //dd($obj_paciente->listar());
-
-        return view('paciente', compact('paciente', $paciente));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $result = \App\model\Paciente::all();
+        
+        return response()->json($result);
     }
 
     /**
@@ -39,7 +33,15 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paciente = $request->all();
+        $result = \App\model\Paciente::create($paciente);
+
+        if($result !== ""){
+            return response()->json($result);
+        }
+
+        return ['error' => 'Erro na criação do paciente'];
+        
     }
 
     /**
@@ -50,18 +52,9 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $result = \App\model\Paciente::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json($result);
     }
 
     /**
@@ -73,7 +66,9 @@ class PacienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = \App\model\Paciente::findOrFail($id);
+        $result->update($request->all());
+        return response()->json($result);
     }
 
     /**
@@ -84,6 +79,8 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = \App\model\Paciente::findOrFail($id);
+        $result->delete();
+        return response()->json($result);
     }
 }

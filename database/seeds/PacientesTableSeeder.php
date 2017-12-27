@@ -19,12 +19,14 @@ class PacientesTableSeeder extends Seeder
 
             $model = \App\model\Paciente::create([
                 'nome' => $paciente->nome,
-                'rua' => $paciente->rua,
+                'email'=>$paciente->email,
+                'rua' =>$paciente->rua,
                 'bairro' => $paciente->bairro,
                 'cidade' => $paciente->cidade,
                 'estado' => $paciente->estado,
                 'cep' => $paciente->cep,
-                'numero' => $paciente->complemento,
+                'numero' => $paciente->numero,
+                'complemento'=>$paciente->complemento,
                 'dt_nasc' => $paciente->dt_nasc,
                 'cpf' => $paciente->cpf,
                 'rg' => $paciente->rg,
@@ -34,9 +36,9 @@ class PacientesTableSeeder extends Seeder
                 'convenio' => $paciente->convenio,
                 'num_convenio' => $paciente->num_convenio,
                 'val_convenio' => $paciente->val_convenio,
-                'via' => $paciente->via,
+                'via_convenio' => $paciente->via_convenio,
                 'profissao' => $paciente->profissao,
-                'empresa' => $paciente->empresa,
+                'empresa' => $paciente->empresa
             ]);
 
             $paciente->save();

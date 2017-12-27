@@ -8,7 +8,8 @@ class Paciente extends Model
 {
 
     protected $fillable = [
-        'nome' ,
+        'nome',
+        'email',
         'rua',
         'bairro',
         'cidade',
@@ -25,18 +26,8 @@ class Paciente extends Model
         'convenio',
         'num_convenio',
         'val_convenio',
-        'venct_convenio',
+        'via_convenio',
         'profissao',
-        'empresa',
+        'empresa'
     ];
- /*
-    public function listar(){
-        $paciente = [
-            (object)["nome"=>"Simone", "telefone"=>"987404766"],
-            (object)["nome"=>"Vitor", "telefone"=>"123456789"]
-        ];
-
-        return $paciente;
-    }
-*/
 }

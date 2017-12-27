@@ -13,10 +13,12 @@ class CreatePacientesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->string('rua');
+            $table->string('email');
+            $table->text('rua',100);
             $table->string('bairro');
             $table->string('cidade');
             $table->string('estado');
@@ -26,13 +28,13 @@ class CreatePacientesTable extends Migration
             $table->string('dt_nasc');
             $table->string('cpf');
             $table->string('rg');
-            $table->integer('telefone');
-            $table->integer('celular');
+            $table->string('telefone');
+            $table->string('celular');
             $table->string('operadora');
             $table->string('convenio');
             $table->string('num_convenio');
             $table->string('val_convenio');
-            $table->string('venct_convenio');
+            $table->string('via_convenio');
             $table->string('profissao');
             $table->string('empresa');
             $table->timestamps();

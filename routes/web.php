@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('/home');
 });
 
-
+Route::get('/home', 'Api\HomeController@index')->name('home');
+//Route::get('/paciente', 'Api\PacienteController@index')->name('paciente');
